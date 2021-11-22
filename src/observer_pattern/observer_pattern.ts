@@ -18,7 +18,7 @@ class Subject {
     }
 }
 
-interface Observer {
+export interface Observer {
     update: (...args: any[]) => any
 }
 
@@ -32,7 +32,7 @@ class ObserverOne implements Observer {
 class ObserverTwo implements Observer {
     // This observer concats the arguments.
     update = (...args: any[]) => {
-        const concat =  args.reduce((prev, cur) => prev + cur + "", "CONCATENATED: ");
+        const concat = args.reduce((prev, cur) => prev + cur + "", "CONCATENATED: ");
         console.log(concat);
         return concat;
     }
@@ -43,4 +43,4 @@ const subject = new Subject();
 subject.attach(new ObserverOne());
 subject.attach(new ObserverTwo());
 
-subject.notifyAll("Event 1", "Event 2", "Event 3")
+subject.notifyAll("Event 1", "Event 2", "Event 3");
