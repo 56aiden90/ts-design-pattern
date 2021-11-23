@@ -1,6 +1,6 @@
 class Factory {
-    makeProduct<T extends Constructor & Product>(product: T) {
-        return new product();
+    makeProduct<T extends Constructor & Product>(product: T, ...args: any[]) {
+        return new product(...args);
     }
 }
 
@@ -24,7 +24,7 @@ class ProductTwo implements Product {
 }
 
 const factory = new Factory();
-const productOne = factory.makeProduct(ProductOne);
+const productOne = factory.makeProduct(ProductOne, "Product One");
 const productTwo = factory.makeProduct(ProductTwo);
 
 console.log(productOne.name);
